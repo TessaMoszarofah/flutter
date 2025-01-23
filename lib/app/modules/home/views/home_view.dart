@@ -1,22 +1,42 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
+    HomeController controller = Get.put(HomeController()); // Memanggil HomeController
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+      backgroundColor: HexColor('#feeee8'), // Warna latar belakang
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Lottie.network(
+              'https://gist.githubusercontent.com/olipiskandar/2095343e6b34255dcfb042166c4a3283/raw/d76e1121a2124640481edcf6e7712130304d6236/praujikom_kucing.json',
+              fit: BoxFit.cover, // Animasi Lottie dari URL
+            ),
+            const SizedBox(
+              height: 15, // Jarak antara animasi dan teks
+            ),
+            Text(
+              'Aplikasi Portal Berita Indonesia', // Teks judul
+              style: GoogleFonts.roboto(
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.bold, // Gaya teks
+                  fontSize: 30, // Ukuran font
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
